@@ -27,13 +27,13 @@
 
 ##### Project jwt-csharp-netcore ################################
 - Program write on Visual studio 2017, Console App (Core)
-- Used .net core 2.2 
+- Used .net core 3.0
 - Package Library use to program:
 	BouncyCastle 1.8.5
 	jose-jwt 2.4.0
 
 How to build with Visual Studio Code:
-    #1 Download .net core 2.2 (https://dotnet.microsoft.com/download/dotnet-core)
+    #1 Download .net core 3.0 (https://dotnet.microsoft.com/download/dotnet-core)
 	#2 Download Visual Studio Code (https://code.visualstudio.com/)
 	#3 Install Extension C# for VS Code (Extension: C# for Visual Studio Code (powered by OmniSharp).
 	#4 From VS Code Open Folder jwt-csharp-netcore
