@@ -31,12 +31,16 @@ namespace jwt_csharp_netcore
                 if (_paramOptions.PrivateKeyPath != string.Empty)
                 {
 
-                    DateTime currentTime = DateTime.UtcNow;
+                    long currentTime = DateTimeOffset.Now.ToUnixTimeSeconds();
+
+
+
 
                     var payload = new Dictionary<string, object>();
                     payload["iss"] = _paramOptions.Issuer;
                     payload["iat"] = currentTime;
-                    payload["exp"] = currentTime.AddMinutes(30);
+
+                    payload["exp"] = currentTime + 3600; // 3600 1 hour
 
                     if (_paramOptions.Username != string.Empty)
                     {
