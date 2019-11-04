@@ -1,5 +1,4 @@
-﻿
-using Jose;
+﻿using Jose;
 using Newtonsoft.Json;
 using Org.BouncyCastle.Asn1;
 using Org.BouncyCastle.Asn1.Pkcs;
@@ -18,25 +17,10 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace jwt_csharp
+namespace jwt_csharp_netcore
 {
     class Program
     {
-      
-        /*
-         * 
-         * jwt-csharp.
-         * Usage:
-         * jwt-csharp.exe [--key=<str>] [--issuer=<str>] [--username=<str>]
-         * jwt-csharp.exe (-h | --help)
-         * Options:
-         *  --key=<str>       path to private key
-         *  --issuer=<str>    issuer id from api connsole
-         *  --username=<str>  username if generating user token
-         *  -h --help         Show this screen.
-         *
-         */
-
         static void Main(string[] args)
         {            
             ParamOptions _paramOptions = new ParamOptions(args);
@@ -77,18 +61,7 @@ namespace jwt_csharp
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
-
-
-            Console.ReadLine();
-
         }
-
-        
-
-
-
-       
-
 
 
         private static string getKey(string pathKey)
@@ -103,10 +76,10 @@ namespace jwt_csharp
             RSAParameters rsaParams;
             using (var tr = new StreamReader(privateRsaKeyPath))
             {
-                var pemReader = new PemReader(tr);           
+                var pemReader = new PemReader(tr);
 
                 RsaPrivateCrtKeyParameters privkey = null;
-                Object obj = pemReader.ReadObject();                
+                Object obj = pemReader.ReadObject();
                 if (obj != null)
                 {
                     privkey = (RsaPrivateCrtKeyParameters)obj;
@@ -115,18 +88,10 @@ namespace jwt_csharp
             }
             using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider())
             {
-                rsa.ImportParameters(rsaParams);                
+                rsa.ImportParameters(rsaParams);
                 return Jose.JWT.Encode(payload, rsa, Jose.JwsAlgorithm.RS512);
             }
         }
-
-
-
-
-
-
-
-
 
 
     }
